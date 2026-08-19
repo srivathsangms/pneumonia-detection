@@ -1,128 +1,125 @@
-# Pneumonia Detection using Deep Learning
 
-This project detects **Pneumonia from Chest X-ray images** using a **MobileNetV2 Deep Learning model**.
-It also visualizes model predictions using **Grad-CAM** to highlight important regions in the X-ray.
+<div align="center">
 
----
+# 🫁 Pneumonia Detection using Deep Learning
 
-## Project Overview
+**Classifying chest X-rays as Normal or Pneumonia using Transfer Learning (MobileNetV2), with Grad-CAM explainability.**
 
-Pneumonia is a lung infection that can be identified using chest X-rays.
-In this project, a **Transfer Learning** approach is used to classify X-ray images into:
+![Python](https://img.shields.io/badge/Python-3.x-3776AB?logo=python&logoColor=white)
+![TensorFlow](https://img.shields.io/badge/TensorFlow-Keras-FF6F00?logo=tensorflow&logoColor=white)
+![Streamlit](https://img.shields.io/badge/Streamlit-App-FF4B4B?logo=streamlit&logoColor=white)
+![License](https://img.shields.io/badge/License-Educational-lightgrey)
 
-* Normal
-* Pneumonia
-
-The model is trained on the **Chest X-ray Pneumonia dataset from Kaggle**.
+</div>
 
 ---
 
-## Technologies Used
+## 📖 Overview
 
-* Python
-* TensorFlow / Keras
-* OpenCV
-* Matplotlib
-* NumPy
-* Scikit-learn
-* Streamlit
+Pneumonia is a serious lung infection that can be diagnosed from chest X-ray images. This project uses a **transfer learning** approach — built on **MobileNetV2** pretrained on ImageNet — to classify chest X-rays as:
+
+- 🟢 **Normal**
+- 🔴 **Pneumonia**
+
+To make the model's decisions interpretable, **Grad-CAM** is used to visualize the exact lung regions that influenced each prediction, highlighting *why* the model made its call rather than treating it as a black box.
 
 ---
 
-## Dataset
+## ✨ Features
 
-Dataset used:
-Chest X-ray Pneumonia Dataset (Kaggle)
+- 🧠 Transfer learning on **MobileNetV2** for fast, accurate binary classification
+- 🔥 **Grad-CAM** heatmaps for visual model explainability
+- 🖼️ Image augmentation (rotation, zoom, shifts, flips) for better generalization
+- 📊 Trained and evaluated on the Kaggle Chest X-ray Pneumonia dataset
+- 🌐 Streamlit-ready for an interactive web demo
 
-Folder structure:
+---
+
+## 🏗️ Model Architecture
+
+| Component | Details |
+|---|---|
+| **Base model** | MobileNetV2 (pretrained on ImageNet) |
+| **Custom head** | Global Average Pooling → Dense (ReLU) → Dropout → Dense (Sigmoid) |
+| **Loss function** | Binary Crossentropy |
+| **Optimizer** | Adam |
+| **Input size** | 224 × 224 |
+| **Batch size** | 32 |
+| **Epochs** | 10 |
+
+**Data augmentation:** rotation, zoom, width shift, height shift, horizontal flip.
+
+---
+
+## 🗂️ Dataset
+
+Trained on the **[Chest X-ray Pneumonia dataset](https://www.kaggle.com/datasets/paultimothymooney/chest-xray-pneumonia)** (Kaggle).
+
+Expected folder structure:
+
+```
 chest_xray/
 │
 ├── train/
 ├── val/
 └── test/
+```
 
 ---
 
-## Model Architecture
+## 🚀 Getting Started
 
-Base Model: MobileNetV2 (Pretrained on ImageNet)
+### 1. Install dependencies
 
-Custom Layers:
-
-* Global Average Pooling
-* Dense Layer (ReLU)
-* Dropout
-* Output Layer (Sigmoid)
-
-Loss Function: Binary Crossentropy
-Optimizer: Adam
-
----
-
-## Training Details
-
-* Image size: 224x224
-* Batch size: 32
-* Epochs: 10
-
-Data augmentation used:
-
-* Rotation
-* Zoom
-* Width shift
-* Height shift
-* Horizontal flip
-
----
-
-## Grad-CAM Visualization
-
-Grad-CAM is used to visualize:
-
-* Which part of the lung image influenced prediction
-* Helps in model explainability
-
----
-
-## Installation
-
-Install dependencies:
-
+```bash
 pip install tensorflow opencv-python matplotlib seaborn scikit-learn streamlit
+```
 
----
+### 2. Download the dataset
 
-## How to Run
+Download the [Chest X-ray Pneumonia dataset](https://www.kaggle.com/datasets/paultimothymooney/chest-xray-pneumonia) from Kaggle and place the `chest_xray/` folder in the project directory.
 
-1. Download dataset from Kaggle
-2. Place dataset in project folder
-3. Run the Python file:
+### 3. Run the project
 
+```bash
 python sri_med_project.py
+```
+
+The trained model is saved as `pneumonia_model.h5`.
 
 ---
 
-## Model File
+## 🔍 Grad-CAM Visualization
 
-Saved model:
-pneumonia_model.h5
+Grad-CAM overlays a heatmap on each X-ray showing which regions most influenced the model's prediction — useful for:
 
----
-
-## Future Improvements
-
-* Increase epochs for better accuracy
-* Deploy full web app using Streamlit
-* Improve UI and user input features
+- Verifying the model is focusing on lung regions, not artifacts
+- Building trust in the model's predictions
+- Making the classification explainable to non-technical users
 
 ---
 
-## Author
+## 🛠️ Tech Stack
 
-B.Tech AI & DS Student
+`Python` · `TensorFlow / Keras` · `OpenCV` · `Matplotlib` · `NumPy` · `Scikit-learn` · `Streamlit`
 
 ---
 
-## License
+## 🔮 Future Improvements
 
-This project is for educational purposes.
+- [ ] Train for more epochs to improve accuracy
+- [ ] Deploy a full interactive web app using Streamlit
+- [ ] Improve UI and add richer user input/upload features
+
+---
+
+## 👤 Author
+
+**Srivathsan GMS**
+B.Tech Artificial Intelligence & Data Science Student
+
+---
+
+## 📄 License
+
+This project is for **educational purposes**.
